@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 😶‍🌫️ Intro
+본 소스는 `리액트를 다루는 기술` 속 일정관리(TodoList)를 구현한 코드입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🥸 Project Setup
+### 최초 셋팅
+```
+yarn create react-app react-todo-app
+cd react-todo-app
+yarn add sass classnames react-icons
+```
+### 이후 시작
+```
+yarn add
+yarn start
+```
 
-## Available Scripts
+# 🤩 TIL
+### props와 children
+- props : 부모 컴포넌트가 자식에게 주는 값
+  - 사용 예)
+    - `<TodoList todos={todos}/>` todos 라는 변수명으로, 'todos' 라는 값을 보냄
+    - 자식 컴포넌트에선 `const TodoList = ({todos}) => {...}`의 형태로 todos 변수명을 받아서 사용함
+- children은 props의 한 예로, 태그 사이에 넣은 값을 children 이란 이름으로 보냄
+  - 사용 예)
+    - `<TodoList todos={todos}>테스트값</TodoList>` 처럼 태그 사이에 데이터를 넣음
+    - 자식 컴포넌트에선 `const TodoList = ({todos, children}) => {...}` 처럼 비구조화 할당으로 값을 가져와서 사용
 
-In the project directory, you can run:
+### state란?
+- 컴포넌트에서 자체적으로 사용하는 값 (like 컴포넌트의 지역 변수)
+- 현 예제인 함수형 컴포넌트에선 `const [변수명, set변수명] = useState(초기값);` 으로 선언하여 사용한다.
+  - "`useState()` 함수를 실행시켜, 내가 사용할 변수와 setter를 반환받는다!"
 
-### `yarn start`
+### JSX에서 {}의 역할은?
+- JSX 내에서 동적 데이터/로직/Javascript처리를 하기 위해 사용
+  - 마치 JSP에서 Java코드를 쓰기 위해 스크립틀릿(`<%...%>`)을 사용하는 것과 같은 역할
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 왜 map을 사용할 땐, key props를 지정해야 할까?
+- key를 지정하면 React에서 컴포넌트의 랜더링 여부(추가, 생성, 제거 등)를 탐색(인덱싱)하기 쉬워짐
+- key를 지정하지 않으면, 모든 컴포넌트를 비교해야해서 성능 저하가 발생함

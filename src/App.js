@@ -26,7 +26,7 @@ function App() {
     <TodoTemplate>
       <TodoInsert />
       {/* 1) TodoList에게 todos라는 이름으로 위 값(상태)를 전송 */}
-      <TodoList todos={todos}/>
+      <TodoList todos={todos}>Footer 영역</TodoList>
     </TodoTemplate>
   );
 }
