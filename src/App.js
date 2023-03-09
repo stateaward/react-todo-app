@@ -42,12 +42,16 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   }, [todos]);
 
+  const onToggle = useCallback( id =>{
+    setTodos(todos.map(todo => { return id === todo.id ? {...todo, checked: !todo.checked} : todo}))
+  }, [todos]);
+
   return (
     <TodoTemplate>
       {/* TodoInsert에게 onInsert 함수를 useCallback으로 감싸서 전달 */}
       <TodoInsert onInsert={onInsert} />
       {/* 1) TodoList에게 todos라는 이름으로 위 값(상태)를 전송 */}
-      <TodoList todos={todos} onRemove={onRemove}>Footer 영역</TodoList>
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}>Footer 영역</TodoList>
     </TodoTemplate>
   );
 }
