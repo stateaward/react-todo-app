@@ -2,8 +2,8 @@ import { MdCheckBoxOutlineBlank, MdCheckBox, MdRemoveCircleOutline } from 'react
 import cn from 'classnames'   // 조건부 랜더링을 쉽게 하기 위함
 import './TodoListItem.scss';
 
-export default function TodoListItem({ todo }) {
-  const { text, checked } = todo;
+export default function TodoListItem({ todo, onRemove }) {
+  const { id, text, checked } = todo;
 
   return (
     <div className='TodoListItem'>
@@ -11,7 +11,7 @@ export default function TodoListItem({ todo }) {
           {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
           <div className='text'>{text}</div>
         </div>        
-        <div className='remove'>
+        <div className='remove' onClick={()=>onRemove(id)}>
             <MdRemoveCircleOutline />
         </div>
     </div>
